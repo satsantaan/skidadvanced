@@ -1,166 +1,304 @@
-# SKIDS Advanced - Comprehensive Child Development Platform
+# SKIDS Advanced - Child Health & Development Platform
 
-A premium child development platform featuring organ-specific testing, behavioral assessments, and comprehensive reporting with Kurzgesagt-inspired scientific visualizations.
+**A comprehensive digital platform for child health monitoring, behavioral assessment, and educational content delivery.**
 
-## 🎯 Mission
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC)](https://tailwindcss.com/)
+[![PWA](https://img.shields.io/badge/PWA-Ready-green)](https://web.dev/progressive-web-apps/)
 
-Enable every child to reach their fullest potential through comprehensive health examinations, behavioral assessments, learning milestones, and subscription-based preventive care with engaging scientific storytelling.
+---
 
-## ✨ Key Features
+## 🎯 **Project Overview**
 
-### 🧠 Interactive Body Map System
-- Full-body child silhouette with glowing organ indicators
-- Animated connection lines showing test relationships
-- Floating organ icons with character personalities
-- Color-coded testing protocols
+SKIDS Advanced is a modern web platform designed to revolutionize child healthcare through:
 
-### 🎨 Kurzgesagt-Inspired Design
-- Vibrant educational animations explaining medical concepts
-- Friendly organ characters with unique personalities
-- Smooth particle-based biological process animations
-- Bright, optimistic color palette making medical content engaging
+- **Interactive Discovery Journeys**: Educational exploration of body systems
+- **Behavioral Assessments**: AI-powered SKIDS Clinic Chatter for emotional wellness
+- **Tiered Care Plans**: Essential (₹299), Comprehensive (₹499), Premium (₹799) monthly subscriptions
+- **Provider Dashboard**: Healthcare provider management and campaign tools
+- **PWA Capabilities**: Mobile-first progressive web application
+- **Educational Integration**: Partnerships with Kurzgesagt, TED-Ed, BrainPOP, Khan Academy
 
-### 👥 Multi-User Dashboard System
-- **Parent Portal:** Child development tracking with beautiful visualizations
-- **Doctor Dashboard:** Patient management with testing protocols
-- **Manager Console:** Campaign creation, package customization, analytics
+---
 
-### 🔬 Organ-Specific Testing Modules
-- Temperature measurement with animated thermometer character
-- Respiratory system with breathing pattern animations
-- Cardiovascular with heart rhythm visualizations
-- Digestive system with nutrition absorption animations
-- Sensory systems with sound wave and frequency visualizations
+## 🏗️ **Architecture Summary**
 
-## 🎨 Design System
+### **Technology Stack**
+- **Frontend**: Next.js 14 with App Router, React 18, TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **Animations**: Framer Motion for smooth interactions
+- **Authentication**: Clerk (production) / Mock system (development)
+- **Payments**: Razorpay integration for Indian market
+- **Database**: PostgreSQL with Supabase (production)
+- **Deployment**: Vercel with edge functions
 
-### Color Palette (Organ-Specific)
-- **Brain/Head:** Soft purple (#8B5FBF)
-- **Respiratory:** Cyan blue (#00BCD4)
-- **Cardiovascular:** Pink-red (#E91E63)
-- **Digestive:** Warm green (#4CAF50)
-- **Skin:** Soft pink (#FFB6C1)
-- **Sensory:** Golden orange (#FF9800)
+### **Key Features**
+- ✅ **6 Interactive Discovery Journeys** (Cardiovascular, Respiratory, Digestive, Nervous, Musculoskeletal, Immune)
+- ✅ **Behavioral Assessment System** (SKIDS Clinic Chatter, Digital Wellness)
+- ✅ **Three-Tier Care Plans** with educational content integration
+- ✅ **Provider Dashboard** with campaign management
+- ✅ **PWA Infrastructure** with offline capabilities
+- ✅ **Mock Authentication** for development testing
+- ✅ **Responsive Design** optimized for mobile devices
 
-## 🛠 Technical Stack
+---
 
-- **Frontend:** Next.js 14 with TypeScript
-- **Styling:** Tailwind CSS with custom design system
-- **Animations:** Framer Motion for transitions, Three.js for 3D models
-- **Data Visualization:** D3.js for health analytics
-- **Icons:** Lucide React
-- **State Management:** Zustand
-- **UI Components:** Radix UI primitives
+## 🚀 **Quick Start**
 
-## 🚀 Getting Started
+### **Prerequisites**
+- Node.js 18+ installed
+- npm or yarn package manager
+- Git for version control
+- Modern web browser (Chrome, Firefox, Safari, Edge)
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+### **Installation**
 
-### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd skids-advanced
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd skids-advanced
-   ```
+# Switch to development branch
+git checkout internal-deployment-v1
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+# Install dependencies
+npm install
 
-3. **Start development server**
+# Copy environment variables
+cp .env.example .env.local
+
+# Start development server
+npm run dev
+```
+
+### **Access the Application**
+- **Local Development**: http://localhost:3000
+- **Staging Environment**: https://skids-advanced-internal.vercel.app
+- **Access Code**: `SKIDS2024` (for internal testing)
+
+---
+
+## ⚙️ **Environment Configuration**
+
+### **Environment Variables**
+
+Create a `.env.local` file in the root directory:
+
+```env
+# =============================================================================
+# DEPLOYMENT CONFIGURATION
+# =============================================================================
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_DEPLOYMENT_ENV=development
+NEXT_PUBLIC_DEPLOYMENT_TYPE=local
+
+# =============================================================================
+# AUTHENTICATION (Clerk) - OPTIONAL FOR DEVELOPMENT
+# =============================================================================
+# Uncomment when ready for production authentication
+# NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_actual_key_here
+# CLERK_SECRET_KEY=sk_test_your_actual_key_here
+
+# =============================================================================
+# PAYMENT GATEWAY (Razorpay) - OPTIONAL FOR DEVELOPMENT
+# =============================================================================
+# Uncomment when ready for payment integration
+# NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_your_key_here
+# RAZORPAY_KEY_SECRET=your_secret_key_here
+
+# =============================================================================
+# DATABASE - OPTIONAL FOR DEVELOPMENT
+# =============================================================================
+# Uncomment when ready for database integration
+# DATABASE_URL=postgresql://user:password@host:port/database
+
+# =============================================================================
+# INTERNAL TESTING CONFIGURATION
+# =============================================================================
+NEXT_PUBLIC_TESTING_MODE=true
+NEXT_PUBLIC_MOCK_DATA=true
+NEXT_PUBLIC_INTERNAL_ACCESS_CODE=SKIDS2024
+```
+
+---
+
+## 📜 **Available Scripts**
+
+### **Development Scripts**
+```bash
+# Start development server with hot reload
+npm run dev
+
+# Build application for production
+npm run build
+
+# Start production server (after build)
+npm start
+
+# Run type checking
+npm run type-check
+
+# Run linting
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+
+# Format code with Prettier
+npm run format
+```
+
+### **Testing Scripts**
+```bash
+# Run unit tests
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run end-to-end tests
+npm run test:e2e
+```
+
+---
+
+## 🛠️ **Local Development Workflow**
+
+### **Daily Development Process**
+
+1. **Start Development Server**
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+2. **Make Changes**
+   - Edit files in `src/` directory
+   - Changes auto-reload in browser
+   - TypeScript errors shown in terminal
 
-## 📁 Project Structure
+3. **Test Changes**
+   - Test in browser at http://localhost:3000
+   - Test on mobile devices using network IP
+   - Verify PWA functionality
+
+4. **Commit Changes**
+   ```bash
+   git add .
+   git commit -m "feat: describe your changes"
+   git push origin feature-branch-name
+   ```
+
+### **Development Best Practices**
+
+- **Component Structure**: Use functional components with TypeScript
+- **Styling**: Use Tailwind CSS classes, avoid custom CSS when possible
+- **State Management**: Use React hooks and context for state
+- **Performance**: Implement lazy loading and code splitting
+- **Accessibility**: Follow WCAG 2.1 guidelines
+- **Mobile First**: Design for mobile, enhance for desktop
+
+---
+
+## 📁 **Project Structure**
 
 ```
 src/
-├── app/                    # Next.js app directory
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
-├── components/            # React components
-│   ├── body-map/         # Interactive body map components
-│   ├── layout/           # Layout components
-│   └── sections/         # Page sections
-└── lib/                  # Utility functions and configurations
+├── app/                         # Next.js 14 App Router
+│   ├── layout.tsx               # Root layout with providers
+│   ├── page.tsx                 # Homepage
+│   ├── dashboard/               # Parent/Provider dashboard
+│   ├── discovery/               # Discovery journeys
+│   ├── behavioral/              # Behavioral assessments
+│   ├── care-plans/              # Care plans system
+│   ├── provider/                # Provider dashboard
+│   └── api/                     # API routes
+├── components/                  # Reusable components
+│   ├── layout/                  # Layout components
+│   ├── discovery/               # Discovery journey components
+│   ├── behavioral/              # Assessment components
+│   ├── care-plans/              # Care plan components
+│   ├── provider/                # Provider components
+│   └── ui/                      # Base UI components
+├── hooks/                       # Custom React hooks
+├── lib/                         # Utility libraries
+└── styles/                      # Global styles
 ```
 
-## 🎭 Component Architecture
+---
 
-### Interactive Body Map
-- `InteractiveBodyMap.tsx` - Main body map container
-- `OrganCard.tsx` - Hover cards for organ information
-- `TestingModal.tsx` - Detailed testing interface
+## 🔧 **Troubleshooting**
 
-### Layout Components
-- `Navigation.tsx` - Main navigation with user menu
-- `Hero.tsx` - Landing page hero section
-- `FeatureShowcase.tsx` - Feature grid with animations
+### **Common Setup Issues**
 
-## 🎨 Animation System
+#### **Issue**: `npm install` fails
+```bash
+# Solution: Clear cache and reinstall
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+```
 
-The platform uses a sophisticated animation system built on:
-- **Framer Motion** for component transitions and interactions
-- **CSS animations** for continuous effects (floating, pulsing, glowing)
-- **SVG animations** for connection lines and data visualizations
+#### **Issue**: TypeScript errors on startup
+```bash
+# Solution: Check TypeScript configuration
+npm run type-check
+# Fix any type errors in the codebase
+```
 
-## 📊 Subscription Tiers
+#### **Issue**: PWA features not working
+```bash
+# Solution: Verify HTTPS and service worker
+# PWA requires HTTPS (works on localhost)
+# Check browser developer tools for service worker registration
+```
 
-- **Essential Care:** Basic organ screening, quarterly reports
-- **Comprehensive Care:** Advanced multi-organ analysis, monthly tracking
-- **Premium Care:** Complete health ecosystem monitoring, 24/7 AI assistant
+---
 
-## 🔒 Compliance & Security
+## 📚 **Additional Resources**
 
-- HIPAA-compliant infrastructure design
-- End-to-end encryption for health data
-- Scientific accuracy verified by pediatric specialists
-- Privacy-first approach to child health data
+### **Documentation**
+- [Architecture Overview](./ARCHITECTURE.md)
+- [Database Schema](./DATABASE_SCHEMA.sql)
+- [Implementation Timeline](./IMPLEMENTATION_TIMELINE.md)
+- [Production Setup Guide](./PRODUCTION_SETUP.md)
+- [Testing Guidelines](./TESTING_GUIDELINES.md)
 
-## 🚧 Development Phases
+### **External Resources**
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
-### Phase 1: Foundation ✅
-- [x] Project setup and architecture
-- [x] Design system implementation
-- [x] Interactive body map
-- [x] Basic navigation and layout
+---
 
-### Phase 2: Core Features (In Progress)
-- [ ] AI health assistant
-- [ ] Behavioral assessment system
-- [ ] Campaign management tools
-- [ ] Real-time reporting
+## 🤝 **Contributing**
 
-### Phase 3: Advanced Features (Planned)
-- [ ] Predictive analytics
-- [ ] Integration ecosystem
-- [ ] Mobile applications
-- [ ] Advanced optimization
+### **Development Guidelines**
+1. Follow TypeScript best practices
+2. Use conventional commit messages
+3. Write tests for new features
+4. Ensure mobile responsiveness
+5. Maintain accessibility standards
 
-## 🎯 Performance Goals
+---
 
-- 60fps animations for all sequences
-- Responsive scaling across all devices
-- Scientific accuracy in all visualizations
-- Optimal loading times and user experience
+## 📞 **Support**
 
-## 🤝 Contributing
+### **Team Contacts**
+- **Project Lead**: [Contact for project direction and priorities]
+- **Technical Lead**: [Contact for architecture and technical decisions]
+- **DevOps Lead**: [Contact for deployment and infrastructure]
 
-This is a proprietary project for SKIDS.CLINIC. For development questions or feature requests, please contact the development team.
+---
 
-## 📄 License
+## 📄 **License**
 
-Proprietary - All rights reserved by SKIDS.CLINIC
+This project is proprietary software developed for SKIDS Advanced platform.
+
+---
+
+**🚀 READY FOR DEVELOPMENT - COMPREHENSIVE PLATFORM FOR CHILD HEALTH & EDUCATION**
