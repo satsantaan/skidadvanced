@@ -35,7 +35,7 @@ export function CarePlanBuilder({ isOpen, onClose, onSave, editingPlan }: CarePl
     name: '',
     description: '',
     category: 'custom',
-    targetAgeGroup: { min: 6, max: 216, label: '6 months - 18 years', adaptations: [] },
+    targetAgeGroup: { min: 6, max: 216, label: '6 months - 18 years', adaptations: [] as string[] },
     pricing: {
       basePrice: 0,
       finalPrice: 0,
@@ -101,7 +101,7 @@ export function CarePlanBuilder({ isOpen, onClose, onSave, editingPlan }: CarePl
       name: '',
       description: '',
       category: 'custom',
-      targetAgeGroup: { min: 6, max: 216, label: '6 months - 18 years', adaptations: [] },
+      targetAgeGroup: { min: 6, max: 216, label: '6 months - 18 years', adaptations: [] as string[] },
       pricing: {
         basePrice: 0,
         finalPrice: 0,
