@@ -202,12 +202,12 @@ export interface PlanCreationRequest {
 
 export interface ServiceCreationRequest {
   name: string
-  category: string
-  type: string
+  category: 'intervention' | 'assessment' | 'consultation' | 'monitoring'
+  type: 'vision' | 'hearing' | 'nutrition' | 'behavioral' | 'dental' | 'dermatology' | 'allergy' | 'sleep' | 'focus' | 'movement'
   description: string
   basePrice: number
   duration: number
-  frequency: string
+  frequency: 'one-time' | 'weekly' | 'bi-weekly' | 'monthly' | 'quarterly'
   ageGroups: AgeGroup[]
   specialists: string[]
   technology: string[]

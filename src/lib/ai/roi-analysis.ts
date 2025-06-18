@@ -147,7 +147,7 @@ export interface SeasonalityPattern {
 }
 
 // AI ROI Analysis Engine
-export class AIROIAnalysisEngine {
+class AIROIAnalysisEngine {
   private models: AIModel[]
   private benchmarkData: BenchmarkData
   private historicalData: HistoricalData
@@ -636,14 +636,3 @@ export const roiAnalysisEngine = new AIROIAnalysisEngine()
 
 // Export additional utilities for analytics dashboard
 export { AIROIAnalysisEngine }
-export type {
-  ROIAnalysis,
-  FinancialROIMetrics,
-  QualityROIMetrics,
-  OperationalROIMetrics,
-  RiskROIMetrics,
-  PredictiveROIAnalysis,
-  ROIRecommendation,
-  ROIBenchmark,
-  ROITrend
-}

@@ -9,7 +9,8 @@ import {
   CreatePaymentIntentRequest,
   CreateSubscriptionRequest,
   UpdateSubscriptionRequest,
-  PaymentError
+  PaymentError,
+  PaymentErrorData
 } from '@/types/payment'
 
 export abstract class PaymentGateway {
@@ -359,7 +360,7 @@ export class MockPaymentGateway extends PaymentGateway {
     }
 
     // Reset all other payment methods for this user
-    for (const [id, pm] of this.mockData.paymentMethods) {
+    for (const [id, pm] of Array.from(this.mockData.paymentMethods)) {
       if (pm.userId === userId) {
         pm.isDefault = id === paymentMethodId
       }

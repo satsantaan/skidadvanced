@@ -97,7 +97,7 @@ export interface ComplianceMetric {
   lastAudit: Date
   nextAudit: Date
   violations: number
-  status: 'compliant' | 'non_compliant' | 'under_review'
+  status: 'compliant' | 'non_compliant' | 'under_review' | 'remediation_required'
 }
 
 export interface VendorCostAnalysis {
@@ -223,7 +223,7 @@ export interface SystemPerformanceMetric {
 export interface SystemAlert {
   id: string
   type: 'performance' | 'security' | 'integration' | 'compliance'
-  severity: 'low' | 'medium' | 'high' | 'critical'
+  severity: 'low' | 'medium' | 'high' | 'critical' | 'error' | 'info' | 'warning'
   message: string
   component: string
   timestamp: Date

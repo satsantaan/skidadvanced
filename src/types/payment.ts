@@ -250,10 +250,26 @@ export interface PaymentProviderConfig {
   }
 }
 
-export interface PaymentError {
+export interface PaymentErrorData {
   code: string
   message: string
   type: 'validation' | 'authentication' | 'processing' | 'network'
   providerId: string
   details?: Record<string, any>
+}
+
+export class PaymentError extends Error {
+  public code: string
+  public type: 'validation' | 'authentication' | 'processing' | 'network'
+  public providerId: string
+  public details?: Record<string, any>
+
+  constructor(data: PaymentErrorData) {
+    super(data.message)
+    this.name = 'PaymentError'
+    this.code = data.code
+    this.type = data.type
+    this.providerId = data.providerId
+    this.details = data.details
+  }
 }

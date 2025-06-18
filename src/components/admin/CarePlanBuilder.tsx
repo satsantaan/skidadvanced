@@ -39,7 +39,7 @@ export function CarePlanBuilder({ isOpen, onClose, onSave, editingPlan }: CarePl
     pricing: {
       basePrice: 0,
       finalPrice: 0,
-      billingCycle: 'monthly' as const,
+      billingCycle: 'monthly' as 'monthly' | 'quarterly' | 'annually',
       discountPercentage: 0
     },
     features: [] as string[],
@@ -105,7 +105,7 @@ export function CarePlanBuilder({ isOpen, onClose, onSave, editingPlan }: CarePl
       pricing: {
         basePrice: 0,
         finalPrice: 0,
-        billingCycle: 'monthly',
+        billingCycle: 'monthly' as 'monthly' | 'quarterly' | 'annually',
         discountPercentage: 0
       },
       features: [],

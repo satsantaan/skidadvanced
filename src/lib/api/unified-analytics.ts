@@ -602,6 +602,10 @@ class UnifiedAnalyticsEngine {
   getActiveAlerts() {
     return this.alerts.filter(a => a.status === 'active')
   }
+
+  getRealTimeMetrics(): RealTimeMetrics {
+    return this.realTimeData
+  }
 }
 
 // Singleton instance
@@ -610,7 +614,7 @@ const unifiedAnalyticsEngine = new UnifiedAnalyticsEngine()
 // API exports
 export const unifiedAnalyticsAPI = {
   getUnifiedAnalytics: () => unifiedAnalyticsEngine.getUnifiedAnalytics(),
-  getRealTimeMetrics: () => unifiedAnalyticsEngine.realTimeData,
+  getRealTimeMetrics: () => unifiedAnalyticsEngine.getRealTimeMetrics(),
   getActiveAlerts: () => unifiedAnalyticsEngine.getActiveAlerts(),
   addAlert: (alert: Omit<AnalyticsAlert, 'id' | 'timestamp'>) => unifiedAnalyticsEngine.addAlert(alert),
   updateAlert: (alertId: string, updates: Partial<AnalyticsAlert>) => unifiedAnalyticsEngine.updateAlert(alertId, updates)
