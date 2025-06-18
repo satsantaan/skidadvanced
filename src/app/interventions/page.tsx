@@ -65,6 +65,8 @@ interface Intervention {
   successRate: string
   featured?: boolean
   comingSoon?: boolean
+  url?: string
+  isExternal?: boolean
 }
 
 export default function InterventionsPage() {
