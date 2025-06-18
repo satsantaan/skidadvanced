@@ -32,14 +32,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <AuthProvider>
-      <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-        <body className="font-sans antialiased">
-          <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-            {children}
-          </div>
-        </body>
-      </html>
-    </AuthProvider>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <body className="font-sans antialiased">
+        {children}
+      </body>
+    </html>
   )
 }

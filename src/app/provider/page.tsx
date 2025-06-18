@@ -15,7 +15,13 @@ import {
   BookOpen,
   Gift,
   Mail,
-  Calendar
+  Calendar,
+  TrendingUp,
+  Star,
+  AlertCircle,
+  BarChart3,
+  MessageSquare,
+  Download
 } from 'lucide-react'
 import { useUser } from '@/hooks/useAuth'
 import Link from 'next/link'
@@ -65,10 +71,20 @@ interface ParentIssue {
 
 export default function ProviderDashboard() {
   const { user, isLoaded } = useUser()
-  const [activeTab, setActiveTab] = useState<'plans' | 'campaigns'>('plans')
+  const [activeTab, setActiveTab] = useState<'overview' | 'plans' | 'campaigns' | 'issues' | 'analytics'>('overview')
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
   const [showPlanCustomizer, setShowPlanCustomizer] = useState(false)
   const [showCampaignCreator, setShowCampaignCreator] = useState(false)
+
+  // Mock stats data
+  const stats: ProviderStats = {
+    totalFamilies: 892,
+    activeSubscriptions: 892,
+    monthlyRevenue: 445000,
+    satisfactionScore: 4.7,
+    pendingIssues: 3,
+    campaignReach: 1200
+  }
 
   // Check if user has provider role
   const isProvider = user?.publicMetadata?.role === 'provider'

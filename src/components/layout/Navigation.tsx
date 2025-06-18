@@ -4,16 +4,60 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { Menu, X, Heart, User, Settings, LogOut } from 'lucide-react'
-import { UserButton, SignInButton } from '@clerk/nextjs'
 import { useUser } from '@/hooks/useAuth'
+
+// Mock components for development
+function MockUserButton() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-8 h-8 bg-gradient-to-r from-brain-500 to-cardiovascular-500 rounded-full flex items-center justify-center text-white font-medium text-sm hover:shadow-lg transition-all"
+      >
+        DU
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-10 bg-white border border-gray-200 rounded-lg shadow-lg py-2 w-48 z-50">
+          <Link href="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+            Dashboard
+          </Link>
+          <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+            Profile
+          </Link>
+          <hr className="my-1" />
+          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+            Sign Out (Mock)
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function MockSignInButton({ children }: { children: React.ReactNode }) {
+  return (
+    <button onClick={() => alert('Mock Sign In - Clerk not configured')}>
+      {children}
+    </button>
+  )
+}
 
 export function Navigation() {
   const { user, isSignedIn } = useUser()
   const [isOpen, setIsOpen] = useState(false)
 
+  // Check if Clerk is configured
+  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  const isClerkConfigured = publishableKey && !publishableKey.includes('your_') && !publishableKey.includes('_here')
+
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/discovery', label: 'Discovery' },
+    { href: '/interventions', label: 'Interventions' },
+    { href: '/specialists', label: 'Our Specialists' },
     { href: '/care-plans', label: 'Care Plans' },
     { href: '/behavioral', label: 'Behavioral Assessment' },
     { href: '/provider', label: 'Provider Center' },
@@ -66,24 +110,23 @@ export function Navigation() {
                 >
                   Dashboard
                 </Link>
-                <UserButton
-                  appearance={{
-                    elements: {
-                      avatarBox: "w-8 h-8",
-                      userButtonPopoverCard: "shadow-lg border border-gray-200",
-                      userButtonPopoverActionButton: "hover:bg-gray-50",
-                    },
-                  }}
-                  afterSignOutUrl="/"
-                />
+                {isClerkConfigured ? (
+                  <div>Clerk UserButton would be here</div>
+                ) : (
+                  <MockUserButton />
+                )}
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <SignInButton mode="modal">
-                  <button className="text-gray-700 hover:text-brain-600 transition-colors font-medium">
-                    Sign In
-                  </button>
-                </SignInButton>
+                {isClerkConfigured ? (
+                  <div>Clerk SignInButton would be here</div>
+                ) : (
+                  <MockSignInButton>
+                    <button className="text-gray-700 hover:text-brain-600 transition-colors font-medium">
+                      Sign In (Mock)
+                    </button>
+                  </MockSignInButton>
+                )}
                 <Link
                   href="/sign-up"
                   className="bg-gradient-to-r from-brain-500 to-cardiovascular-500 text-white px-4 py-2 rounded-full font-medium hover:shadow-lg transition-all"

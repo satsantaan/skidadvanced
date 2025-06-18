@@ -25,7 +25,10 @@ import {
   Search,
   Filter,
   X,
-  ChevronDown
+  ChevronDown,
+  Microscope,
+  Sparkles,
+  Target
 } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '@/components/layout/Navigation'
@@ -47,6 +50,7 @@ interface DiscoveryJourney {
   activities: string[]
   completed?: boolean
   featured?: boolean
+  progress?: number
   previewContent?: {
     stats?: { label: string; value: string }[]
     quickFacts?: string[]
@@ -1389,14 +1393,68 @@ export default function DiscoveryPage() {
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               After exploring these amazing discoveries, take the next step to protect and nurture your child's development with our comprehensive care plans.
             </p>
-            <Link
-              href="/care-plans"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all"
-            >
-              <Shield className="w-5 h-5" />
-              <span>Explore Care Plans</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/care-plans"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all"
+              >
+                <Shield className="w-5 h-5" />
+                <span>Explore Care Plans</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/interventions"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all"
+              >
+                <Target className="w-5 h-5" />
+                <span>Specialized Interventions</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Interventions Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="mt-8 bg-gradient-to-r from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-100"
+          >
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                🎯 Need Specialized Care?
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                If your discovery journey revealed specific concerns, our specialized interventions use cutting-edge technology
+                and evidence-based approaches to address vision, hearing, behavioral, and developmental challenges.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Eye className="w-6 h-6 text-amber-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Vision Intervention</h3>
+                <p className="text-sm text-gray-600">Myopia arrest lenses & amblyopia treatment</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Ear className="w-6 h-6 text-green-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Hearing Enhancement</h3>
+                <p className="text-sm text-gray-600">SoundScout technology & auditory therapy</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="w-6 h-6 text-purple-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Behavioral Support</h3>
+                <p className="text-sm text-gray-600">ADHD, autism & learning interventions</p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Coming Soon Teaser */}

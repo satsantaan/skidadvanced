@@ -10,7 +10,6 @@ import {
   Pause,
   Ear,
   Hand,
-  Nose,
   Lightbulb,
   Zap,
   Settings,

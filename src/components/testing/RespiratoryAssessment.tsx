@@ -14,8 +14,8 @@ export function RespiratoryAssessment({ childAge, onComplete }: RespiratoryAsses
   const [assessmentData, setAssessmentData] = useState({
     breathingRate: 0,
     exerciseTolerance: '',
-    environmentalFactors: [],
-    symptoms: [],
+    environmentalFactors: [] as string[],
+    symptoms: [] as string[],
     familyHistory: false
   })
 

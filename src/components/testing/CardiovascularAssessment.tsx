@@ -15,8 +15,8 @@ export function CardiovascularAssessment({ childAge, onComplete }: Cardiovascula
     heartRate: 0,
     bloodPressure: { systolic: 0, diastolic: 0 },
     exerciseTolerance: '',
-    symptoms: [],
-    familyHistory: [],
+    symptoms: [] as string[],
+    familyHistory: [] as string[],
     murmurPresent: false,
     murmurDetails: ''
   })
