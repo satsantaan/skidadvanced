@@ -62,7 +62,7 @@ export function Navigation() {
     { href: '/behavioral', label: 'Behavioral Assessment' },
     { href: '/provider', label: 'Provider Center' },
     { href: '/campaigns', label: 'Campaigns' },
-    { href: '/analytics', label: 'Analytics' },
+    { href: '/admin/analytics', label: 'Analytics' },
   ]
 
   return (
