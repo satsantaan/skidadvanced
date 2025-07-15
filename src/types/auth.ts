@@ -1,6 +1,6 @@
 // Enhanced Authentication & User Management Types
 
-export type UserRole = 'parent' | 'provider' | 'vendor' | 'admin' | 'staff' | 'specialist'
+export type UserRole = 'PARENT' | 'PROVIDER' | 'ADMIN'
 
 export interface User {
   id: string
