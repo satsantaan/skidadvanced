@@ -21,6 +21,9 @@ export default function HomePage() {
               <Link href="/interventions" className="text-gray-700 hover:text-purple-600 transition-colors font-medium">Interventions</Link>
               <Link href="/specialists" className="text-gray-700 hover:text-purple-600 transition-colors font-medium">Specialists</Link>
               <Link href="/admin/analytics" className="text-gray-700 hover:text-purple-600 transition-colors font-medium">Analytics</Link>
+              <Link href="/sign-in" className="text-gray-700 hover:text-purple-600 transition-colors font-medium">
+                <button className="bg-purple-600 text-white px-4 py-2 rounded-md">Get Started</button>
+              </Link>
             </div>
           </div>
         </div>
