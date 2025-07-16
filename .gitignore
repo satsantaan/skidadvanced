@@ -121,3 +121,5 @@ patient-files/
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+/generated/prisma

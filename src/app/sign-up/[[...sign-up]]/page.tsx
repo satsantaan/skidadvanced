@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, User, Stethoscope } from 'lucide-react'
+import { useUser } from '@/hooks/useUser'
+import type { UserRole } from '@/types/user'
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -10,12 +12,13 @@ export default function SignUpPage() {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'parent' as 'parent' | 'provider'
+    role: 'PARENT' as UserRole
   })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const { registerUser } = useUser();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,16 +30,11 @@ export default function SignUpPage() {
 
     setIsLoading(true)
 
-    // Mock authentication - simulate API call
-    setTimeout(() => {
-      localStorage.setItem('skids-auth', JSON.stringify({
-        user: { id: '1', email: formData.email, name: formData.name },
-        role: formData.role
-      }))
+    const res = await registerUser(formData.email, formData.password, formData.name, formData.role);
+    console.log(res);
 
-      setIsLoading(false)
-      router.push('/dashboard')
-    }, 1000)
+    setIsLoading(false);
+    router.push('/sign-in');
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -174,7 +172,8 @@ export default function SignUpPage() {
                 </button>
               </div>
             </div>
-
+            
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
@@ -182,6 +181,7 @@ export default function SignUpPage() {
             >
               {isLoading ? 'Creating Account...' : 'Create Account'}
             </button>
+
           </form>
         </div>
         

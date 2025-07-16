@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
+import { useUser } from '@/hooks/useUser'
 
 export default function SignInPage() {
+  const { loginUser } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -15,17 +17,13 @@ export default function SignInPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Mock authentication - simulate API call
-    setTimeout(() => {
-      // For demo purposes, any email/password combination works
-      localStorage.setItem('skids-auth', JSON.stringify({
-        user: { id: '1', email, name: 'Demo User' },
-        role: email.includes('provider') ? 'provider' : 'parent'
-      }))
-
-      setIsLoading(false)
+    const res = await loginUser(email, password)
+    
+    if (res?.error) {
+      alert(res.error)
+    } else {
       router.push('/dashboard')
-    }, 1000)
+    }
   }
 
   return (
